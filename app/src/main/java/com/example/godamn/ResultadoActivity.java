@@ -1,6 +1,7 @@
 package com.example.godamn;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +20,7 @@ public class ResultadoActivity extends AppCompatActivity {
         TextView campoNomeResultado = findViewById(R.id.campoNomeResultado);
         TextView campoImcResultado = findViewById(R.id.campoImcResultado);
         TextView campoResultado = findViewById(R.id.campoResultadoTexto);
+        ImageView imagemResultado = findViewById(R.id.imagemResultado);
 
         double intentPeso = getIntent().getDoubleExtra("peso", 1);
         double intentAltura = getIntent().getDoubleExtra("altura", 1);
@@ -33,28 +35,35 @@ public class ResultadoActivity extends AppCompatActivity {
 
         if(imcResultado < 16){
             campoResultado.setText("Magreza grave!");
+            imagemResultado.setImageResource(R.drawable.abaixopeso);
 
-        } else if (16 <= imcResultado && imcResultado < 17) {
-            campoResultado.setText("magreza moderada");
+        } else if (imcResultado < 17) {
+            campoResultado.setText("Magreza moderada");
+            imagemResultado.setImageResource(R.drawable.abaixopeso);
 
-        } else if (17 <= imcResultado && imcResultado < 18.5) {
-            campoResultado.setText("magreza leve");
+        } else if (imcResultado < 18.5) {
+            campoResultado.setText("Magreza leve");
+            imagemResultado.setImageResource(R.drawable.abaixopeso);
 
-        } else if (18.5 <= imcResultado && imcResultado < 25) {
-            campoResultado.setText("saudavel");
+        } else if (imcResultado < 25) {
+            campoResultado.setText("Saudável");
+            imagemResultado.setImageResource(R.drawable.normal);
 
-        } else if (25 <= imcResultado && imcResultado < 30) {
-            campoResultado.setText("sobrepeso");
+        } else if (imcResultado < 30) {
+            campoResultado.setText("Sobrepeso");
+            imagemResultado.setImageResource(R.drawable.sobrepeso);
 
-        } else if (30 <= imcResultado && imcResultado < 35) {
-            campoResultado.setText("obesidade grau 1");
+        } else if (imcResultado < 35) {
+            campoResultado.setText("Obesidade grau 1");
+            imagemResultado.setImageResource(R.drawable.obesidade1);
 
-        } else if (35 <= imcResultado && imcResultado < 40) {
-            campoResultado.setText("obesidade grau 2");
+        } else if (imcResultado < 40) {
+            campoResultado.setText("Obesidade grau 2");
+            imagemResultado.setImageResource(R.drawable.obesidade2);
 
-        } else if (imcResultado > 40) {
-            campoResultado.setText("obesidade grau 3");
-
+        } else {
+            campoResultado.setText("Obesidade grau 3");
+            imagemResultado.setImageResource(R.drawable.obesidade3);
         }
 
 
